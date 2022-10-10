@@ -52,7 +52,7 @@ exports.handler = async (event, context) => {
       // })
       // console.log(data);
 
-      const { storage, error2 } = await supabase
+      const { data, error } = await supabase
       .storage
       .from('web-scraper-data')
       .update('public/current_benediction_queue.jpg', screenshot, {
@@ -64,7 +64,7 @@ exports.handler = async (event, context) => {
       statusCode: 200,
       body: JSON.stringify(
         { 
-          storage
+          data
         })
     }
 
