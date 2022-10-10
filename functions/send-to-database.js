@@ -41,16 +41,16 @@ exports.handler = async (event, context) => {
     await browser.close();
 
       //send text to supbase
-      const { data, error } = await supabase
-      .from('benediction-queue')
-      .update({
-        number_in_queue: numberInQueue,
-        blizzard_eta: blizzETA,
-        updated_at: new Date().toISOString().toLocaleString('en-US'),
-      }).match({
-        id: 1,
-      })
-      console.log(data);
+      // const { data, error } = await supabase
+      // .from('benediction-queue')
+      // .update({
+      //   number_in_queue: numberInQueue,
+      //   blizzard_eta: blizzETA,
+      //   updated_at: new Date().toISOString().toLocaleString('en-US'),
+      // }).match({
+      //   id: 1,
+      // })
+      // console.log(data);
 
       const { storage, error2 } = await supabase
       .storage
@@ -62,7 +62,7 @@ exports.handler = async (event, context) => {
     return {
       statusCode: 200,
       body: JSON.stringify(
-        { data, 
+        { 
           storage
         })
     }
