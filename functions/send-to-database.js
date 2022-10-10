@@ -43,7 +43,7 @@ exports.handler = async (event, context) => {
 
     const { data, error } = await supabase.from('benediction-queue')
     .update({
-      current_queue: numberInQueue,
+      number_in_queue: numberInQueue,
       blizzard_eta: blizzETA,
       updated_at: new Date().toISOString().toLocaleString('en-US'),
     }).match({
