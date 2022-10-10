@@ -55,7 +55,7 @@ exports.handler = async (event, context) => {
       const { storage, error2 } = await supabase
       .storage
       .from('web-scraper-data')
-      .update('public/current_benediction_queue', screenshot, {
+      .update('public/current_benediction_queue.jpg', screenshot, {
         cacheControl: '3600',
     })
 
