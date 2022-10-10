@@ -33,17 +33,7 @@ exports.handler = async (event, context) => {
     
     await page.goto(whatSite);
 
-    const screenshot = await page.screenshot({
-      type: 'jpg',
-      quality: 100,
-      clip: {
-        x: 0,
-        y: 0,
-        width: 640,
-        height: 360,
-      },
-      omitBackground: true,
-    });
+    const screenshot = await page.screenshot({ encoding: "base64" });
     const numberInQueue = await page.$eval('body > section:nth-child(1) > div > h2 > div:nth-child(1) > span', (el) => el.innerText);
     const blizzETA = await page.$eval('body > section:nth-child(1) > div > h2 > div:nth-child(2) > span', (el) => el.innerText);
 
