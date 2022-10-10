@@ -33,24 +33,31 @@ exports.handler = async (event, context) => {
     
     await page.goto(whatSite);
 
-    // const screenshot = await page.screenshot();
+    const screenshot = await page.screenshot();
     const numberInQueue = await page.$eval('body > section:nth-child(1) > div > h2 > div:nth-child(1) > span', (el) => el.innerText);
     const blizzETA = await page.$eval('body > section:nth-child(1) > div > h2 > div:nth-child(2) > span', (el) => el.innerText);
 
 
     await browser.close();
 
+      //send text to supbase
+      const { data, error } = await supabase
+      .from('benediction-queue')
+      .update({
+        number_in_queue: numberInQueue,
+        blizzard_eta: blizzETA,
+        updated_at: new Date().toISOString().toLocaleString('en-US'),
+      }).match({
+        id: 1,
+      })
+      console.log(data);
 
-    const { data, error } = await supabase.from('benediction-queue')
-    .update({
-      number_in_queue: numberInQueue,
-      blizzard_eta: blizzETA,
-      updated_at: new Date().toISOString().toLocaleString('en-US'),
-    }).match({
-      id: 1,
+      const { storage, error2 } = await supabase
+      .storage
+      .from('web-scraper-data')
+      .update('public/current_benediction_queue', screenshot, {
+        cacheControl: '3600',
     })
-
-    console.log(data);
 
     return {
       statusCode: 200,
@@ -58,13 +65,13 @@ exports.handler = async (event, context) => {
     }
 
 
-} catch (error) {
-await browser.close();
-console.log(error);
-return {
-    statusCode: 500,
-    body: JSON.stringify({error: 'Failed'}),
-}
+  } catch (error) {
+  await browser.close();
+  console.log(error);
+  return {
+      statusCode: 500,
+      body: JSON.stringify({error: 'Failed'}),
+  }
 }   
 
 
