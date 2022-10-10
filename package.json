@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@sparticuz/chromium": "^106.0.2",
+    "@supabase/supabase-js": "^1.35.7",
+    "dotenv": "^16.0.3",
+    "puppeteer-core": "^18.2.1"
+  }
+}
