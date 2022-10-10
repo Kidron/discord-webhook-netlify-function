@@ -57,6 +57,7 @@ exports.handler = async (event, context) => {
       .from('web-scraper-data')
       .update('public/current_benediction_queue.jpg', screenshot, {
         cacheControl: '3600',
+        upsert: false,
     })
 
     return {
