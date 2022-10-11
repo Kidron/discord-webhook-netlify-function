@@ -34,11 +34,16 @@ exports.handler = async (event, context) => {
     await page.goto(whatSite);
 
     const screenshot = await page.screenshot();
-    const numberInQueue = await page.$eval('body > section:nth-child(1) > div > h2 > div:nth-child(1) > span', (el) => el.innerText);
-    const blizzETA = await page.$eval('body > section:nth-child(1) > div > h2 > div:nth-child(2) > span', (el) => el.innerText);
+    let numberInQueue = await page.$eval('body > section:nth-child(1) > div > h2 > div:nth-child(1) > span', (el) => el.innerText);
+    let blizzETA = await page.$eval('body > section:nth-child(1) > div > h2 > div:nth-child(2) > span', (el) => el.innerText);
 
 
     await browser.close();
+
+    if(numberInQueue === null || blizzETA === null) {
+      numberInQueue = 0;
+      blizzETA = "None";
+    }
 
       //send text to supbase
       // const { data, error } = await supabase
