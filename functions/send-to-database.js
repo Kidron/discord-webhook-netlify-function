@@ -33,7 +33,7 @@ exports.handler = async (event, context) => {
     
     await page.goto(whatSite);
 
-    const screenshot = await page.screenshot({ encoding: "base64" });
+    const screenshot = await page.screenshot();
     const numberInQueue = await page.$eval('body > section:nth-child(1) > div > h2 > div:nth-child(1) > span', (el) => el.innerText);
     const blizzETA = await page.$eval('body > section:nth-child(1) > div > h2 > div:nth-child(2) > span', (el) => el.innerText);
 
@@ -51,13 +51,34 @@ exports.handler = async (event, context) => {
       //   id: 1,
       // })
       // console.log(data);
+      let queueUrl = "";
+      if(screenshot) {
+        const { data, error } = await supabase
+        .storage
+        .from('images')
+        .upload('public/', screenshot);
+  
+        console.log(data);
+
+        if(error) {
+          console.log(error);
+        }
+
+        if(data) {
+          console.log(data);
+      }
+    }
 
       const { data, error } = await supabase
-      .storage
-      .from('images')
-      .upload('public/', screenshot);
+      .from("benediction-queue")
+      .update({
+        updated_at: new Date().toISOString().toLocaleString('en-US'),
+        number_in_queue : numberInQueue,
+        blizzard_eta: blizzETA,
+        queue_url: screenshot
+      })
 
-      console.log(data);
+
 
     return {
       statusCode: 200,
