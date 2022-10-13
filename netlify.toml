@@ -4,5 +4,5 @@
 [functions."send-to-database"]
   schedule = "*/3 * * * *"
 
-  [functions."send-webhook"]
+[functions."send-webhook"]
   schedule = "*/5 * * * *"
