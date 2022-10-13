@@ -26,13 +26,6 @@ exports.handler = async (event, context) => {
 
       console.log("Element", ele);
       return await page.$eval(ele, (el) => el.innerText);
-      // if(ele) {
-      //   return await page.$eval(ele, (el) => el.innerText);
-      // } else {
-      //     ele = null
-      // }
-
-
       
     } catch (error) {
       console.log(`Element ${ele} not found`);
@@ -79,12 +72,16 @@ exports.handler = async (event, context) => {
       }
     }
 
+    // if(!numberInQueue) {
+    //   numberInQueue = 0;
+    // }
+
       const { data, error } = await supabase
       .from("benediction-queue")
       .update({
         updated_at: new Date().toISOString().toLocaleString('en-US'),
-        number_in_queue : numberInQueue,
-        blizzard_eta: blizzETA,
+        number_in_queue : `${numberInQueue ? numberInQueue : 0}`,
+        blizzard_eta: `${blizzETA ? blizzETA : "0 minutes"}`,
         as_of: asOf,
         queue_url: queueUrl
       })
