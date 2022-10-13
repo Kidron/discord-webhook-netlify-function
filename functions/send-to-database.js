@@ -25,7 +25,7 @@ exports.handler = async (event, context) => {
     try {
 
       console.log("Element", ele);
-
+      return await page.$eval(ele, (el) => el.innerText);
       // if(ele) {
       //   return await page.$eval(ele, (el) => el.innerText);
       // } else {
@@ -36,7 +36,7 @@ exports.handler = async (event, context) => {
       
     } catch (error) {
       console.log(`Element ${ele} not found`);
-      ele = null
+      return ele = null
         // asOf = "N/A"
     }
 
