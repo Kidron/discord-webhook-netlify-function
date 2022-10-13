@@ -33,7 +33,7 @@ exports.handler = async (event, context) => {
         "url": queueUrl
       },
       "footer": {
-        "text": `${queueData.as_of} EST`
+        "text": `${queueData.as_of} EST \nTo add this to your server add Kidron#8857 on discord \nCredits to https://multidollar.company/, if they go down the count will be off`
       }
     }]
     }), 
