@@ -40,22 +40,37 @@ exports.handler = async (event, context) => {
     }), 
     headers: { 'Content-Type': 'application/json' }
 }
+
+  let response;
     try {
 
-      discordData.forEach(url => {
+      response = await discordData.map(url => {
         fetch(url.discord_url, options)
-        console.log(`Webhook sent to ${url.discord_url}`);
-
+            console.log(`Webhook sent to ${url.discord_url}`);
       })
+      // discordData.forEach(url => {
+      //   fetch(url.discord_url, options)
+      //   console.log(`Webhook sent to ${url.discord_url}`);
+
+      // })
     
   } catch (error) {
     console.log(error);
+
+    return {
+      statusCode: err.statusCode || 500,
+      body: JSON.stringify({
+        error: error
+      })
+    }
     
   }
 
   return {
     statusCode: 200,
-    body: JSON.stringify({ discordData, queueData }),
+    body: JSON.stringify({ 
+      data: response
+    }),
   };
  
 }
