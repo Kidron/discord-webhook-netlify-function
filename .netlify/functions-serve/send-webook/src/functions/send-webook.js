@@ -15878,10 +15878,11 @@ Credits to https://multidollar.company/, if they go down the count will be off`
   };
   try {
     discordData.forEach((url) => {
-      console.log(url.discord_url);
       fetch2(url.discord_url, options);
+      console.log(`Webhook sent to ${url.discord_url}`);
     });
   } catch (error) {
+    console.log(error);
   }
   return {
     statusCode: 200,
