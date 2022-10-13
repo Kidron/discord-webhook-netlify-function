@@ -2,6 +2,7 @@
   "dependencies": {
     "@sparticuz/chromium": "^106.0.2",
     "@supabase/supabase-js": "^1.35.7",
+    "axios": "^1.1.2",
     "dotenv": "^16.0.3",
     "node-fetch": "^2.3.0",
     "puppeteer-core": "^18.2.1"

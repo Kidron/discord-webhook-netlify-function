@@ -1,5 +1,6 @@
 const { supabase } = require("../../utils/database");
 const fetch = require('node-fetch');
+// const axios = require('axios');
 const dotenv = require("dotenv").config();
 
 
@@ -19,7 +20,7 @@ exports.handler = async (event, context) => {
 
   const queueUrl = "https://ciktdhbfjlocsbqtikcn.supabase.co/storage/v1/object/public/public/current-bene-queue.png";
 
-  const options = {
+  const requestOptions = {
     method: 'POST',
     body: JSON.stringify({
       "content": "",
@@ -42,13 +43,25 @@ exports.handler = async (event, context) => {
   let response;
     try {
 
-      response = await discordData.map(url => {
-        fetch(url.discord_url, options)
-          .then(res => {
-            return res.json();
-          })
-            console.log(`Webhook sent to ${url.discord_url}`);
+      discordData.forEach(url => {
+        try {
+          fetch(url.discord_url, requestOptions)
+          console.log(`Webhook sent to ${url.discord_url}`);
+        } catch(error) {
+          console.log(error.message);
+        }
+
       })
+
+      // response = await discordData.map(url => 
+
+      //   fetch(url.discord_url, requestOptions)
+
+      //     )
+      //     .then(result => result.text())
+      //     .catch(error => throw error)
+        
+          // console.log(`Webhook sent to ${url.discord_url}`);
       // discordData.forEach(url => {
       //   fetch(url.discord_url, options)
       //   console.log(`Webhook sent to ${url.discord_url}`);
