@@ -1,6 +1,6 @@
 const { supabase } = require("../../utils/database");
 const fetch = require('node-fetch');
-// const axios = require('axios');
+const axios = require('axios');
 const dotenv = require("dotenv").config();
 
 
@@ -20,7 +20,7 @@ exports.handler = async (event, context) => {
 
   const queueUrl = "https://ciktdhbfjlocsbqtikcn.supabase.co/storage/v1/object/public/public/current-bene-queue.png";
 
-  const requestOptions = {
+  const config = {
     method: 'POST',
     body: JSON.stringify({
       "content": "",
@@ -40,18 +40,24 @@ exports.handler = async (event, context) => {
     headers: { 'Content-Type': 'application/json' }
 }
 
-  let response;
-    try {
+  // let response;
 
-      discordData.forEach(url => {
-        try {
-          fetch(url.discord_url, requestOptions)
-          console.log(`Webhook sent to ${url.discord_url}`);
-        } catch(error) {
-          console.log(error.message);
-        }
+  const requests = discordData.map(url => fetch(url.discord_url, config));
+  const responses = await Promise.all(requests);
+  const promises = responses.map(response => response.text());
+  const fetchData = await Promise.all(promises);
+    // try {
 
-      })
+      // discordData.forEach(url => {
+
+      //     return axios(url.discord_url, config)
+      //       .then(res => {
+      //         console.log(`Webhook sent to ${url.discord_url}`);
+      //       })
+
+      // })
+
+
 
       // response = await discordData.map(url => 
 
@@ -68,22 +74,22 @@ exports.handler = async (event, context) => {
 
       // })
     
-  } catch (error) {
-    console.log(error);
+  // } catch (error) {
+  //   console.log(error);
 
-    return {
-      statusCode: err.statusCode || 500,
-      body: JSON.stringify({
-        error: error
-      })
-    }
+  //   return {
+  //     statusCode: err.statusCode || 500,
+  //     body: JSON.stringify({
+  //       error: error
+  //     })
+  //   }
     
-  }
+  // }
 
   return {
     statusCode: 200,
     body: JSON.stringify({ 
-      data: response
+      fetchData
     }),
   };
  
