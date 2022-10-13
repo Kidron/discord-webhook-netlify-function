@@ -25,10 +25,10 @@ exports.handler = async (event, context) => {
     method: 'POST',
     body: JSON.stringify({
       "content": "",
-    username: "Benediction Queue Status",
+    username: `Benediction Current Queue: ${queueData.number_in_queue}`,
     embeds: [{
-      "title": `Number in queue: 0`,
-      "description": `Blizzard ETA: 0`,
+      "title": `Number in queue: ${queueData.number_in_queue}`,
+      "description": `Blizzard ETA: ${queueData.blizzard_eta}`,
       "image": {
         "url": queueUrl
       },
