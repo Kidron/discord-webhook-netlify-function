@@ -1,4 +1,4 @@
-const { supabase } = require("../utils/database");
+const { supabase } = require("../../utils/database");
 const puppeteer = require("puppeteer-core");
 const chromium = require("@sparticuz/chromium");
 const dotenv = require("dotenv").config();

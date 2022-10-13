@@ -1,4 +1,4 @@
-const { supabase } = require("../utils/database");
+const { supabase } = require("../../utils/database");
 const fetch = require('node-fetch');
 const dotenv = require("dotenv").config();
 
