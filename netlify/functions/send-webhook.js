@@ -1,6 +1,5 @@
 const { supabase } = require("../../utils/database");
 const fetch = require('node-fetch');
-const axios = require('axios');
 const dotenv = require("dotenv").config();
 
 
@@ -39,40 +38,10 @@ exports.handler = async (event, context) => {
     }), 
     headers: { 'Content-Type': 'application/json' }
 }
-
-  // let response;
-
   const requests = discordData.map(url => fetch(url.discord_url, config));
   const responses = await Promise.all(requests);
   const promises = responses.map(response => response.text());
   const fetchData = await Promise.all(promises);
-    // try {
-
-      // discordData.forEach(url => {
-
-      //     return axios(url.discord_url, config)
-      //       .then(res => {
-      //         console.log(`Webhook sent to ${url.discord_url}`);
-      //       })
-
-      // })
-
-
-
-      // response = await discordData.map(url => 
-
-      //   fetch(url.discord_url, requestOptions)
-
-      //     )
-      //     .then(result => result.text())
-      //     .catch(error => throw error)
-        
-          // console.log(`Webhook sent to ${url.discord_url}`);
-      // discordData.forEach(url => {
-      //   fetch(url.discord_url, options)
-      //   console.log(`Webhook sent to ${url.discord_url}`);
-
-      // })
     
   // } catch (error) {
   //   console.log(error);
