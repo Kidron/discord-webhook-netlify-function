@@ -1,5 +1,5 @@
 [functions]
   directory = "functions"
 
-# [functions."send-to-database"]
-#   schedule = "*/3 * * * *"
+[functions."send-to-database"]
+  schedule = "*/3 * * * *"
