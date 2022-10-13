@@ -27,6 +27,7 @@ exports.handler = async (event, context) => {
       "content": "",
     username: `Benediction Current Queue: ${queueData.number_in_queue}`,
     embeds: [{
+      "color": `${queueData.number_in_queue > 0 ? 16711680 : 2021216}`,
       "title": `Number in queue: ${queueData.number_in_queue}`,
       "description": `Blizzard ETA: ${queueData.blizzard_eta}`,
       "image": {
