@@ -27,7 +27,7 @@ exports.handler = async (event, context) => {
       "content": "",
     username: "Benediction Queue Status",
     embeds: [{
-      "title": `Number in queue 0`,
+      "title": `Number in queue: 0`,
       "description": `Blizzard ETA: 0`,
       "image": {
         "url": queueUrl

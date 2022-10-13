@@ -25,12 +25,18 @@ exports.handler = async (event, context) => {
     try {
 
       console.log("Element", ele);
-      return await page.$eval(ele, (el) => el.innerText);
+
+      if(ele) {
+        return await page.$eval(ele, (el) => el.innerText);
+      } else {
+          ele = null
+      }
+
+
       
     } catch (error) {
       console.log("No queue at this time");
-        // numberInQueue = 0;
-        // blizzETA = "None";
+
         // asOf = "N/A"
     }
 
