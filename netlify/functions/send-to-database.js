@@ -72,10 +72,6 @@ exports.handler = async (event, context) => {
       }
     }
 
-    // if(!numberInQueue) {
-    //   numberInQueue = 0;
-    // }
-
       const { data, error } = await supabase
       .from("benediction-queue")
       .update({

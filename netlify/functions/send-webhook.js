@@ -38,22 +38,14 @@ exports.handler = async (event, context) => {
     }), 
     headers: { 'Content-Type': 'application/json' }
 }
+
+//POST to any URLs in db
   const requests = discordData.map(url => fetch(url.discord_url, config));
   const responses = await Promise.all(requests);
   const promises = responses.map(response => response.text());
   const fetchData = await Promise.all(promises);
     
-  // } catch (error) {
-  //   console.log(error);
-
-  //   return {
-  //     statusCode: err.statusCode || 500,
-  //     body: JSON.stringify({
-  //       error: error
-  //     })
-  //   }
-    
-  // }
+  //Need to add error handling
 
   return {
     statusCode: 200,
