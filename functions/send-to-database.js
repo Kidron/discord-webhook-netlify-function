@@ -35,7 +35,7 @@ exports.handler = async (event, context) => {
 
       
     } catch (error) {
-      console.log("No queue at this time");
+      console.log(`Element ${ele} not found`);
       ele = null
         // asOf = "N/A"
     }
