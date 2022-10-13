@@ -42,8 +42,9 @@ exports.handler = async (event, context) => {
     try {
 
       discordData.forEach(url => {
-        console.log(url.discord_url);
         fetch(url.discord_url, options)
+        console.log(`Webhook sent to ${url.discord_url}`);
+
       })
     
   } catch (error) {
