@@ -17,8 +17,6 @@ exports.handler = async (event, context) => {
 
   const queueData = queue_data[0];
 
-  console.log(queueData);
-
   const queueUrl = "https://ciktdhbfjlocsbqtikcn.supabase.co/storage/v1/object/public/public/current-bene-queue.png";
 
   const options = {
