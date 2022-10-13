@@ -26,17 +26,17 @@ exports.handler = async (event, context) => {
 
       console.log("Element", ele);
 
-      if(ele) {
-        return await page.$eval(ele, (el) => el.innerText);
-      } else {
-          ele = null
-      }
+      // if(ele) {
+      //   return await page.$eval(ele, (el) => el.innerText);
+      // } else {
+      //     ele = null
+      // }
 
 
       
     } catch (error) {
       console.log("No queue at this time");
-
+      ele = null
         // asOf = "N/A"
     }
 
