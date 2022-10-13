@@ -89,6 +89,7 @@ exports.handler = async (event, context) => {
         id: 1
       })
       console.log("Data added to supabase");
+      console.log(`Current Queue: ${numberInQueue}, Blizzard ETA: ${blizzETA}, As of: ${asOf}`);
 
     return {
       statusCode: 200,
