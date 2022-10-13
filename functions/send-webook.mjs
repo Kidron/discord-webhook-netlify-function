@@ -6,31 +6,42 @@ const dotenv = require("dotenv").config();
 
 exports.handler = async (event, context) => {
 
-  let { data, error } = await supabase
+  const { data: discord_data, error: discord_error } = await supabase
   .from('discord_webhooks')
   .select('discord_url')
+  const discordData = discord_data;
 
-  // console.log(data);
+  const { data: queue_data, error: queue_error } = await supabase
+  .from('benediction-queue')
+  .select()
 
-  // const WHAT_WEBHOOK_URL = data;
-  // console.log(WHAT_WEBHOOK_URL);
+  const queueData = queue_data[0];
+
+  console.log(queueData);
+
+  const queueUrl = "https://ciktdhbfjlocsbqtikcn.supabase.co/storage/v1/object/public/public/current-bene-queue.png";
+
   const options = {
     method: 'POST',
     body: JSON.stringify({
-      "content":"test"
+      "content": "",
+    username: "Benediction Queue Status",
+    embeds: [{
+      "title": `Number in queue 0`,
+      "description": `Blizzard ETA: 0`,
+      "image": {
+        "url": queueUrl
+      },
+      "footer": {
+        "text": `${queueData.as_of} EST`
+      }
+    }]
     }), 
     headers: { 'Content-Type': 'application/json' }
 }
-// const discordUrls = data.discord_url;
-// console.log(discordUrls);
-// const discordUrls = [];
     try {
 
-      // const discordUrls = data.map(url => {
-      //   console.log(url);
-      // })
-
-      data.forEach(url => {
+      discordData.forEach(url => {
         console.log(url.discord_url);
         fetch(url.discord_url, options)
       })
@@ -38,11 +49,10 @@ exports.handler = async (event, context) => {
   } catch (error) {
     
   }
-  // console.log(discordUrls);
 
   return {
     statusCode: 200,
-    body: JSON.stringify({ data }),
+    body: JSON.stringify({ discordData, queueData }),
   };
  
 }
