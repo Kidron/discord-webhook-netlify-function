@@ -4,47 +4,25 @@ var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __markAsModule = (target) => __defProp(target, "__esModule", { value: true });
 var __esm = (fn, res) => function __init() {
-  return fn && (res = (0, fn[Object.keys(fn)[0]])(fn = 0)), res;
+  return fn && (res = (0, fn[__getOwnPropNames(fn)[0]])(fn = 0)), res;
 };
 var __commonJS = (cb, mod) => function __require() {
-  return mod || (0, cb[Object.keys(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
+  return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 var __export = (target, all) => {
-  __markAsModule(target);
   for (var name in all)
     __defProp(target, name, { get: all[name], enumerable: true });
 };
-var __reExport = (target, module2, desc) => {
-  if (module2 && typeof module2 === "object" || typeof module2 === "function") {
-    for (let key of __getOwnPropNames(module2))
-      if (!__hasOwnProp.call(target, key) && key !== "default")
-        __defProp(target, key, { get: () => module2[key], enumerable: !(desc = __getOwnPropDesc(module2, key)) || desc.enumerable });
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
   }
-  return target;
+  return to;
 };
-var __toModule = (module2) => {
-  return __reExport(__markAsModule(__defProp(module2 != null ? __create(__getProtoOf(module2)) : {}, "default", module2 && module2.__esModule && "default" in module2 ? { get: () => module2.default, enumerable: true } : { value: module2, enumerable: true })), module2);
-};
-var __accessCheck = (obj, member, msg) => {
-  if (!member.has(obj))
-    throw TypeError("Cannot " + msg);
-};
-var __privateGet = (obj, member, getter) => {
-  __accessCheck(obj, member, "read from private field");
-  return getter ? getter.call(obj) : member.get(obj);
-};
-var __privateAdd = (obj, member, value) => {
-  if (member.has(obj))
-    throw TypeError("Cannot add the same private member more than once");
-  member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
-};
-var __privateSet = (obj, member, value, setter) => {
-  __accessCheck(obj, member, "write to private field");
-  setter ? setter.call(obj, value) : member.set(obj, value);
-  return value;
-};
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target, mod));
 
 // node_modules/web-streams-polyfill/dist/ponyfill.es2018.js
 var require_ponyfill_es2018 = __commonJS({
@@ -557,7 +535,7 @@ var require_ponyfill_es2018 = __commonJS({
         }
         try {
           return x2._asyncIteratorImpl instanceof ReadableStreamAsyncIteratorImpl;
-        } catch (_a4) {
+        } catch (_a) {
           return false;
         }
       }
@@ -1414,7 +1392,7 @@ var require_ponyfill_es2018 = __commonJS({
         }
         try {
           return typeof value.aborted === "boolean";
-        } catch (_a4) {
+        } catch (_a) {
           return false;
         }
       }
@@ -1527,12 +1505,12 @@ var require_ponyfill_es2018 = __commonJS({
         return true;
       }
       function WritableStreamAbort(stream, reason) {
-        var _a4;
+        var _a;
         if (stream._state === "closed" || stream._state === "errored") {
           return promiseResolvedWith(void 0);
         }
         stream._writableStreamController._abortReason = reason;
-        (_a4 = stream._writableStreamController._abortController) === null || _a4 === void 0 ? void 0 : _a4.abort();
+        (_a = stream._writableStreamController._abortController) === null || _a === void 0 ? void 0 : _a.abort();
         const state = stream._state;
         if (state === "closed" || state === "errored") {
           return promiseResolvedWith(void 0);
@@ -2207,7 +2185,7 @@ var require_ponyfill_es2018 = __commonJS({
         try {
           new ctor();
           return true;
-        } catch (_a4) {
+        } catch (_a) {
           return false;
         }
       }
@@ -3230,7 +3208,7 @@ var require_ponyfill_es2018 = __commonJS({
           value: "size",
           configurable: true
         });
-      } catch (_a4) {
+      } catch (_a) {
       }
       class ByteLengthQueuingStrategy {
         constructor(options) {
@@ -3281,7 +3259,7 @@ var require_ponyfill_es2018 = __commonJS({
           value: "size",
           configurable: true
         });
-      } catch (_a4) {
+      } catch (_a) {
       }
       class CountQueuingStrategy {
         constructor(options) {
@@ -3659,9 +3637,9 @@ var require_streams = __commonJS({
       }
     }
     try {
-      const { Blob: Blob3 } = require("buffer");
-      if (Blob3 && !Blob3.prototype.stream) {
-        Blob3.prototype.stream = function name(params) {
+      const { Blob: Blob4 } = require("buffer");
+      if (Blob4 && !Blob4.prototype.stream) {
+        Blob4.prototype.stream = function name(params) {
           let position = 0;
           const blob = this;
           return new ReadableStream({
@@ -3712,17 +3690,17 @@ async function* toIterator(parts, clone2 = true) {
     }
   }
 }
-var import_streams, POOL_SIZE, _parts, _type, _size, _endings, _a, _Blob, Blob2, fetch_blob_default;
+var import_streams, POOL_SIZE, _Blob, Blob3, fetch_blob_default;
 var init_fetch_blob = __esm({
   "node_modules/fetch-blob/index.js"() {
-    import_streams = __toModule(require_streams());
+    import_streams = __toESM(require_streams(), 1);
     POOL_SIZE = 65536;
-    _Blob = (_a = class {
+    _Blob = class Blob2 {
+      #parts = [];
+      #type = "";
+      #size = 0;
+      #endings = "transparent";
       constructor(blobParts = [], options = {}) {
-        __privateAdd(this, _parts, []);
-        __privateAdd(this, _type, "");
-        __privateAdd(this, _size, 0);
-        __privateAdd(this, _endings, "transparent");
         if (typeof blobParts !== "object" || blobParts === null) {
           throw new TypeError("Failed to construct 'Blob': The provided value cannot be converted to a sequence.");
         }
@@ -3741,28 +3719,28 @@ var init_fetch_blob = __esm({
             part = new Uint8Array(element.buffer.slice(element.byteOffset, element.byteOffset + element.byteLength));
           } else if (element instanceof ArrayBuffer) {
             part = new Uint8Array(element.slice(0));
-          } else if (element instanceof _a) {
+          } else if (element instanceof Blob2) {
             part = element;
           } else {
             part = encoder.encode(`${element}`);
           }
-          __privateSet(this, _size, __privateGet(this, _size) + (ArrayBuffer.isView(part) ? part.byteLength : part.size));
-          __privateGet(this, _parts).push(part);
+          this.#size += ArrayBuffer.isView(part) ? part.byteLength : part.size;
+          this.#parts.push(part);
         }
-        __privateSet(this, _endings, `${options.endings === void 0 ? "transparent" : options.endings}`);
+        this.#endings = `${options.endings === void 0 ? "transparent" : options.endings}`;
         const type = options.type === void 0 ? "" : String(options.type);
-        __privateSet(this, _type, /^[\x20-\x7E]*$/.test(type) ? type : "");
+        this.#type = /^[\x20-\x7E]*$/.test(type) ? type : "";
       }
       get size() {
-        return __privateGet(this, _size);
+        return this.#size;
       }
       get type() {
-        return __privateGet(this, _type);
+        return this.#type;
       }
       async text() {
         const decoder = new TextDecoder();
         let str = "";
-        for await (const part of toIterator(__privateGet(this, _parts), false)) {
+        for await (const part of toIterator(this.#parts, false)) {
           str += decoder.decode(part, { stream: true });
         }
         str += decoder.decode();
@@ -3771,14 +3749,14 @@ var init_fetch_blob = __esm({
       async arrayBuffer() {
         const data = new Uint8Array(this.size);
         let offset = 0;
-        for await (const chunk of toIterator(__privateGet(this, _parts), false)) {
+        for await (const chunk of toIterator(this.#parts, false)) {
           data.set(chunk, offset);
           offset += chunk.length;
         }
         return data.buffer;
       }
       stream() {
-        const it = toIterator(__privateGet(this, _parts), true);
+        const it = toIterator(this.#parts, true);
         return new globalThis.ReadableStream({
           type: "bytes",
           async pull(ctrl) {
@@ -3795,7 +3773,7 @@ var init_fetch_blob = __esm({
         let relativeStart = start < 0 ? Math.max(size + start, 0) : Math.min(start, size);
         let relativeEnd = end < 0 ? Math.max(size + end, 0) : Math.min(end, size);
         const span = Math.max(relativeEnd - relativeStart, 0);
-        const parts = __privateGet(this, _parts);
+        const parts = this.#parts;
         const blobParts = [];
         let added = 0;
         for (const part of parts) {
@@ -3820,9 +3798,9 @@ var init_fetch_blob = __esm({
             relativeStart = 0;
           }
         }
-        const blob = new _a([], { type: String(type).toLowerCase() });
-        __privateSet(blob, _size, span);
-        __privateSet(blob, _parts, blobParts);
+        const blob = new Blob2([], { type: String(type).toLowerCase() });
+        blob.#size = span;
+        blob.#parts = blobParts;
         return blob;
       }
       get [Symbol.toStringTag]() {
@@ -3831,43 +3809,43 @@ var init_fetch_blob = __esm({
       static [Symbol.hasInstance](object) {
         return object && typeof object === "object" && typeof object.constructor === "function" && (typeof object.stream === "function" || typeof object.arrayBuffer === "function") && /^(Blob|File)$/.test(object[Symbol.toStringTag]);
       }
-    }, _parts = new WeakMap(), _type = new WeakMap(), _size = new WeakMap(), _endings = new WeakMap(), _a);
+    };
     Object.defineProperties(_Blob.prototype, {
       size: { enumerable: true },
       type: { enumerable: true },
       slice: { enumerable: true }
     });
-    Blob2 = _Blob;
-    fetch_blob_default = Blob2;
+    Blob3 = _Blob;
+    fetch_blob_default = Blob3;
   }
 });
 
 // node_modules/fetch-blob/file.js
-var _lastModified, _name, _a2, _File, File, file_default;
+var _File, File2, file_default;
 var init_file = __esm({
   "node_modules/fetch-blob/file.js"() {
     init_fetch_blob();
-    _File = (_a2 = class extends fetch_blob_default {
+    _File = class File extends fetch_blob_default {
+      #lastModified = 0;
+      #name = "";
       constructor(fileBits, fileName, options = {}) {
         if (arguments.length < 2) {
           throw new TypeError(`Failed to construct 'File': 2 arguments required, but only ${arguments.length} present.`);
         }
         super(fileBits, options);
-        __privateAdd(this, _lastModified, 0);
-        __privateAdd(this, _name, "");
         if (options === null)
           options = {};
         const lastModified = options.lastModified === void 0 ? Date.now() : Number(options.lastModified);
         if (!Number.isNaN(lastModified)) {
-          __privateSet(this, _lastModified, lastModified);
+          this.#lastModified = lastModified;
         }
-        __privateSet(this, _name, String(fileName));
+        this.#name = String(fileName);
       }
       get name() {
-        return __privateGet(this, _name);
+        return this.#name;
       }
       get lastModified() {
-        return __privateGet(this, _lastModified);
+        return this.#lastModified;
       }
       get [Symbol.toStringTag]() {
         return "File";
@@ -3875,9 +3853,9 @@ var init_file = __esm({
       static [Symbol.hasInstance](object) {
         return !!object && object instanceof fetch_blob_default && /^(File)$/.test(object[Symbol.toStringTag]);
       }
-    }, _lastModified = new WeakMap(), _name = new WeakMap(), _a2);
-    File = _File;
-    file_default = File;
+    };
+    File2 = _File;
+    file_default = File2;
   }
 });
 
@@ -3895,7 +3873,7 @@ Content-Type: ${v.type || "application/octet-stream"}\r
   c.push(`--${b}--`);
   return new B(c, { type: "multipart/form-data; boundary=" + b });
 }
-var t, i, h, r, m, f, e, x, _d, _a3, FormData2;
+var t, i, h, r, m, f, e, x, FormData2;
 var init_esm_min = __esm({
   "node_modules/formdata-polyfill/esm.min.js"() {
     init_fetch_blob();
@@ -3910,9 +3888,9 @@ var init_esm_min = __esm({
         throw new TypeError(`Failed to execute '${n}' on 'FormData': ${e2} arguments required, but only ${a.length} present.`);
       }
     };
-    FormData2 = (_a3 = class {
+    FormData2 = class FormData3 {
+      #d = [];
       constructor(...a) {
-        __privateAdd(this, _d, []);
         if (a.length)
           throw new TypeError(`Failed to construct 'FormData': parameter 1 is not of type 'HTMLFormElement'.`);
       }
@@ -3927,17 +3905,17 @@ var init_esm_min = __esm({
       }
       append(...a) {
         x("append", arguments, 2);
-        __privateGet(this, _d).push(f(...a));
+        this.#d.push(f(...a));
       }
       delete(a) {
         x("delete", arguments, 1);
         a += "";
-        __privateSet(this, _d, __privateGet(this, _d).filter(([b]) => b !== a));
+        this.#d = this.#d.filter(([b]) => b !== a);
       }
       get(a) {
         x("get", arguments, 1);
         a += "";
-        for (var b = __privateGet(this, _d), l = b.length, c = 0; c < l; c++)
+        for (var b = this.#d, l = b.length, c = 0; c < l; c++)
           if (b[c][0] === a)
             return b[c][1];
         return null;
@@ -3946,13 +3924,13 @@ var init_esm_min = __esm({
         x("getAll", arguments, 1);
         b = [];
         a += "";
-        __privateGet(this, _d).forEach((c) => c[0] === a && b.push(c[1]));
+        this.#d.forEach((c) => c[0] === a && b.push(c[1]));
         return b;
       }
       has(a) {
         x("has", arguments, 1);
         a += "";
-        return __privateGet(this, _d).some((b) => b[0] === a);
+        return this.#d.some((b) => b[0] === a);
       }
       forEach(a, b) {
         x("forEach", arguments, 1);
@@ -3963,14 +3941,14 @@ var init_esm_min = __esm({
         x("set", arguments, 2);
         var b = [], c = true;
         a = f(...a);
-        __privateGet(this, _d).forEach((d) => {
+        this.#d.forEach((d) => {
           d[0] === a[0] ? c && (c = !b.push(a)) : b.push(d);
         });
         c && b.push(a);
-        __privateSet(this, _d, b);
+        this.#d = b;
       }
       *entries() {
-        yield* __privateGet(this, _d);
+        yield* this.#d;
       }
       *keys() {
         for (var [a] of this)
@@ -3980,7 +3958,7 @@ var init_esm_min = __esm({
         for (var [, a] of this)
           yield a;
       }
-    }, _d = new WeakMap(), _a3);
+    };
   }
 });
 
@@ -4000,49 +3978,46 @@ var require_node_domexception = __commonJS({
 });
 
 // node_modules/fetch-blob/from.js
-var import_node_fs, import_node_path, import_node_domexception, stat, _path, _start, _BlobDataItem, BlobDataItem;
+var import_node_fs, import_node_path, import_node_domexception, stat, BlobDataItem;
 var init_from = __esm({
   "node_modules/fetch-blob/from.js"() {
-    import_node_fs = __toModule(require("fs"));
-    import_node_path = __toModule(require("path"));
-    import_node_domexception = __toModule(require_node_domexception());
+    import_node_fs = require("fs");
+    import_node_path = require("path");
+    import_node_domexception = __toESM(require_node_domexception(), 1);
     init_file();
     init_fetch_blob();
     ({ stat } = import_node_fs.promises);
-    _BlobDataItem = class {
+    BlobDataItem = class {
+      #path;
+      #start;
       constructor(options) {
-        __privateAdd(this, _path, void 0);
-        __privateAdd(this, _start, void 0);
-        __privateSet(this, _path, options.path);
-        __privateSet(this, _start, options.start);
+        this.#path = options.path;
+        this.#start = options.start;
         this.size = options.size;
         this.lastModified = options.lastModified;
       }
       slice(start, end) {
-        return new _BlobDataItem({
-          path: __privateGet(this, _path),
+        return new BlobDataItem({
+          path: this.#path,
           lastModified: this.lastModified,
           size: end - start,
-          start: __privateGet(this, _start) + start
+          start: this.#start + start
         });
       }
       async *stream() {
-        const { mtimeMs } = await stat(__privateGet(this, _path));
+        const { mtimeMs } = await stat(this.#path);
         if (mtimeMs > this.lastModified) {
           throw new import_node_domexception.default("The requested file could not be read, typically due to permission problems that have occurred after a reference to a file was acquired.", "NotReadableError");
         }
-        yield* (0, import_node_fs.createReadStream)(__privateGet(this, _path), {
-          start: __privateGet(this, _start),
-          end: __privateGet(this, _start) + this.size - 1
+        yield* (0, import_node_fs.createReadStream)(this.#path, {
+          start: this.#start,
+          end: this.#start + this.size - 1
         });
       }
       get [Symbol.toStringTag]() {
         return "Blob";
       }
     };
-    BlobDataItem = _BlobDataItem;
-    _path = new WeakMap();
-    _start = new WeakMap();
   }
 });
 
@@ -4808,13 +4783,13 @@ var require_cookies = __commonJS({
       return true;
     }
     function serializeCookie(cookie, secure) {
-      var _a4, _b, _c;
+      var _a, _b, _c;
       return serialize(cookie.name, cookie.value, {
         maxAge: cookie.maxAge,
         expires: new Date(Date.now() + cookie.maxAge * 1e3),
         httpOnly: true,
         secure,
-        path: (_a4 = cookie.path) !== null && _a4 !== void 0 ? _a4 : "/",
+        path: (_a = cookie.path) !== null && _a !== void 0 ? _a : "/",
         domain: (_b = cookie.domain) !== null && _b !== void 0 ? _b : "",
         sameSite: (_c = cookie.sameSite) !== null && _c !== void 0 ? _c : "lax"
       });
@@ -5297,11 +5272,11 @@ var require_url_state_machine = __commonJS({
     function isC0ControlPercentEncode(c) {
       return c <= 31 || c > 126;
     }
-    var extraPathPercentEncodeSet = new Set([32, 34, 35, 60, 62, 63, 96, 123, 125]);
+    var extraPathPercentEncodeSet = /* @__PURE__ */ new Set([32, 34, 35, 60, 62, 63, 96, 123, 125]);
     function isPathPercentEncode(c) {
       return isC0ControlPercentEncode(c) || extraPathPercentEncodeSet.has(c);
     }
-    var extraUserinfoPercentEncodeSet = new Set([47, 58, 59, 61, 64, 91, 92, 93, 94, 124]);
+    var extraUserinfoPercentEncodeSet = /* @__PURE__ */ new Set([47, 58, 59, 61, 64, 91, 92, 93, 94, 124]);
     function isUserinfoPercentEncode(c) {
       return isPathPercentEncode(c) || extraUserinfoPercentEncodeSet.has(c);
     }
@@ -5945,7 +5920,7 @@ var require_url_state_machine = __commonJS({
       }
       return true;
     };
-    var fileOtherwiseCodePoints = new Set([47, 92, 63, 35]);
+    var fileOtherwiseCodePoints = /* @__PURE__ */ new Set([47, 92, 63, 35]);
     URLStateMachine.prototype["parse file"] = function parseFile(c) {
       this.url.scheme = "file";
       if (c === 47 || c === 92) {
@@ -6641,7 +6616,7 @@ var require_lib2 = __commonJS({
     var Readable = Stream3.Readable;
     var BUFFER = Symbol("buffer");
     var TYPE = Symbol("type");
-    var Blob3 = class {
+    var Blob4 = class {
       constructor() {
         this[TYPE] = "";
         const blobParts = arguments[0];
@@ -6660,7 +6635,7 @@ var require_lib2 = __commonJS({
               buffer = Buffer.from(element.buffer, element.byteOffset, element.byteLength);
             } else if (element instanceof ArrayBuffer) {
               buffer = Buffer.from(element);
-            } else if (element instanceof Blob3) {
+            } else if (element instanceof Blob4) {
               buffer = element[BUFFER];
             } else {
               buffer = Buffer.from(typeof element === "string" ? element : String(element));
@@ -6722,17 +6697,17 @@ var require_lib2 = __commonJS({
         const span = Math.max(relativeEnd - relativeStart, 0);
         const buffer = this[BUFFER];
         const slicedBuffer = buffer.slice(relativeStart, relativeStart + span);
-        const blob = new Blob3([], { type: arguments[2] });
+        const blob = new Blob4([], { type: arguments[2] });
         blob[BUFFER] = slicedBuffer;
         return blob;
       }
     };
-    Object.defineProperties(Blob3.prototype, {
+    Object.defineProperties(Blob4.prototype, {
       size: { enumerable: true },
       type: { enumerable: true },
       slice: { enumerable: true }
     });
-    Object.defineProperty(Blob3.prototype, Symbol.toStringTag, {
+    Object.defineProperty(Blob4.prototype, Symbol.toStringTag, {
       value: "Blob",
       writable: false,
       enumerable: false,
@@ -6809,7 +6784,7 @@ var require_lib2 = __commonJS({
       blob() {
         let ct = this.headers && this.headers.get("content-type") || "";
         return consumeBody2.call(this).then(function(buf) {
-          return Object.assign(new Blob3([], {
+          return Object.assign(new Blob4([], {
             type: ct.toLowerCase()
           }), {
             [BUFFER]: buf
@@ -7066,7 +7041,7 @@ var require_lib2 = __commonJS({
     var Headers2 = class {
       constructor() {
         let init = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : void 0;
-        this[MAP] = Object.create(null);
+        this[MAP] = /* @__PURE__ */ Object.create(null);
         if (init instanceof Headers2) {
           const rawHeaders = init.raw();
           const headerNames = Object.keys(rawHeaders);
@@ -7793,9 +7768,9 @@ var require_helpers2 = __commonJS({
     var isBrowser = () => typeof window !== "undefined";
     exports2.isBrowser = isBrowser;
     function getParameterByName(name, url) {
-      var _a4;
+      var _a;
       if (!url)
-        url = ((_a4 = window === null || window === void 0 ? void 0 : window.location) === null || _a4 === void 0 ? void 0 : _a4.href) || "";
+        url = ((_a = window === null || window === void 0 ? void 0 : window.location) === null || _a === void 0 ? void 0 : _a.href) || "";
       name = name.replace(/[\[\]]/g, "\\$&");
       const regex = new RegExp("[?&#]" + name + "(=([^&#]*)|&|#|$)"), results = regex.exec(url);
       if (!results)
@@ -7829,7 +7804,7 @@ var require_helpers2 = __commonJS({
         return null;
       try {
         return JSON.parse(value);
-      } catch (_a4) {
+      } catch (_a) {
         return value;
       }
     });
@@ -7841,7 +7816,7 @@ var require_helpers2 = __commonJS({
       }
       try {
         return JSON.parse(value);
-      } catch (_a4) {
+      } catch (_a) {
         return value;
       }
     };
@@ -7902,8 +7877,8 @@ var require_GoTrueApi = __commonJS({
         return headers;
       }
       cookieName() {
-        var _a4;
-        return (_a4 = this.cookieOptions.name) !== null && _a4 !== void 0 ? _a4 : "";
+        var _a;
+        return (_a = this.cookieOptions.name) !== null && _a !== void 0 ? _a : "";
       }
       getUrlForProvider(provider, options) {
         const urlParams = [`provider=${encodeURIComponent(provider)}`];
@@ -8010,7 +7985,7 @@ var require_GoTrueApi = __commonJS({
         });
       }
       sendMagicLinkEmail(email, options = {}) {
-        var _a4;
+        var _a;
         return __awaiter(this, void 0, void 0, function* () {
           try {
             const headers = Object.assign({}, this.headers);
@@ -8018,7 +7993,7 @@ var require_GoTrueApi = __commonJS({
             if (options.redirectTo) {
               queryString += "?redirect_to=" + encodeURIComponent(options.redirectTo);
             }
-            const shouldCreateUser = (_a4 = options.shouldCreateUser) !== null && _a4 !== void 0 ? _a4 : true;
+            const shouldCreateUser = (_a = options.shouldCreateUser) !== null && _a !== void 0 ? _a : true;
             const data = yield (0, fetch_1.post)(this.fetch, `${this.url}/otp${queryString}`, {
               email,
               create_user: shouldCreateUser,
@@ -8031,10 +8006,10 @@ var require_GoTrueApi = __commonJS({
         });
       }
       sendMobileOTP(phone, options = {}) {
-        var _a4;
+        var _a;
         return __awaiter(this, void 0, void 0, function* () {
           try {
-            const shouldCreateUser = (_a4 = options.shouldCreateUser) !== null && _a4 !== void 0 ? _a4 : true;
+            const shouldCreateUser = (_a = options.shouldCreateUser) !== null && _a !== void 0 ? _a : true;
             const headers = Object.assign({}, this.headers);
             const data = yield (0, fetch_1.post)(this.fetch, `${this.url}/otp`, {
               phone,
@@ -8143,12 +8118,12 @@ var require_GoTrueApi = __commonJS({
             { key: "access-token", value: session.access_token },
             { key: "refresh-token", value: session.refresh_token }
           ].map((token) => {
-            var _a4;
+            var _a;
             return {
               name: `${this.cookieName()}-${token.key}`,
               value: token.value,
               domain: this.cookieOptions.domain,
-              maxAge: (_a4 = this.cookieOptions.lifetime) !== null && _a4 !== void 0 ? _a4 : 0,
+              maxAge: (_a = this.cookieOptions.lifetime) !== null && _a !== void 0 ? _a : 0,
               path: this.cookieOptions.path,
               sameSite: this.cookieOptions.sameSite
             };
@@ -8186,12 +8161,12 @@ var require_GoTrueApi = __commonJS({
             { key: "access-token", value: session.access_token },
             { key: "refresh-token", value: session.refresh_token }
           ].map((token) => {
-            var _a4;
+            var _a;
             return {
               name: `${this.cookieName()}-${token.key}`,
               value: token.value,
               domain: this.cookieOptions.domain,
-              maxAge: (_a4 = this.cookieOptions.lifetime) !== null && _a4 !== void 0 ? _a4 : 0,
+              maxAge: (_a = this.cookieOptions.lifetime) !== null && _a !== void 0 ? _a : 0,
               path: this.cookieOptions.path,
               sameSite: this.cookieOptions.sameSite
             };
@@ -8283,12 +8258,12 @@ var require_GoTrueApi = __commonJS({
                   { key: "access-token", value: data.access_token },
                   { key: "refresh-token", value: data.refresh_token }
                 ].map((token) => {
-                  var _a4;
+                  var _a;
                   return {
                     name: `${this.cookieName()}-${token.key}`,
                     value: token.value,
                     domain: this.cookieOptions.domain,
-                    maxAge: (_a4 = this.cookieOptions.lifetime) !== null && _a4 !== void 0 ? _a4 : 0,
+                    maxAge: (_a = this.cookieOptions.lifetime) !== null && _a !== void 0 ? _a : 0,
                     path: this.cookieOptions.path,
                     sameSite: this.cookieOptions.sameSite
                   };
@@ -8445,7 +8420,7 @@ var require_GoTrueClient = __commonJS({
     };
     var GoTrueClient = class {
       constructor(options) {
-        this.stateChangeEmitters = new Map();
+        this.stateChangeEmitters = /* @__PURE__ */ new Map();
         this.networkRetries = 0;
         const settings = Object.assign(Object.assign({}, DEFAULT_OPTIONS), options);
         this.currentUser = null;
@@ -8596,10 +8571,10 @@ var require_GoTrueClient = __commonJS({
         return this.currentSession;
       }
       refreshSession() {
-        var _a4;
+        var _a;
         return __awaiter(this, void 0, void 0, function* () {
           try {
-            if (!((_a4 = this.currentSession) === null || _a4 === void 0 ? void 0 : _a4.access_token))
+            if (!((_a = this.currentSession) === null || _a === void 0 ? void 0 : _a.access_token))
               throw new Error("Not logged in.");
             const { error } = yield this._callRefreshToken();
             if (error)
@@ -8611,10 +8586,10 @@ var require_GoTrueClient = __commonJS({
         });
       }
       update(attributes) {
-        var _a4;
+        var _a;
         return __awaiter(this, void 0, void 0, function* () {
           try {
-            if (!((_a4 = this.currentSession) === null || _a4 === void 0 ? void 0 : _a4.access_token))
+            if (!((_a = this.currentSession) === null || _a === void 0 ? void 0 : _a.access_token))
               throw new Error("Not logged in.");
             const { user, error } = yield this.api.updateUser(this.currentSession.access_token, attributes);
             if (error)
@@ -8748,9 +8723,9 @@ var require_GoTrueClient = __commonJS({
         });
       }
       signOut() {
-        var _a4;
+        var _a;
         return __awaiter(this, void 0, void 0, function* () {
-          const accessToken = (_a4 = this.currentSession) === null || _a4 === void 0 ? void 0 : _a4.access_token;
+          const accessToken = (_a = this.currentSession) === null || _a === void 0 ? void 0 : _a.access_token;
           this._removeSession();
           this._notifyAllSubscribers("SIGNED_OUT");
           if (accessToken) {
@@ -8778,7 +8753,7 @@ var require_GoTrueClient = __commonJS({
         }
       }
       _handleEmailSignIn(email, password, options = {}) {
-        var _a4, _b;
+        var _a, _b;
         return __awaiter(this, void 0, void 0, function* () {
           try {
             const { data, error } = yield this.api.signInWithEmail(email, password, {
@@ -8787,7 +8762,7 @@ var require_GoTrueClient = __commonJS({
             });
             if (error || !data)
               return { data: null, user: null, session: null, error };
-            if (((_a4 = data === null || data === void 0 ? void 0 : data.user) === null || _a4 === void 0 ? void 0 : _a4.confirmed_at) || ((_b = data === null || data === void 0 ? void 0 : data.user) === null || _b === void 0 ? void 0 : _b.email_confirmed_at)) {
+            if (((_a = data === null || data === void 0 ? void 0 : data.user) === null || _a === void 0 ? void 0 : _a.confirmed_at) || ((_b = data === null || data === void 0 ? void 0 : data.user) === null || _b === void 0 ? void 0 : _b.email_confirmed_at)) {
               this._saveSession(data);
               this._notifyAllSubscribers("SIGNED_IN");
             }
@@ -8798,13 +8773,13 @@ var require_GoTrueClient = __commonJS({
         });
       }
       _handlePhoneSignIn(phone, password, options = {}) {
-        var _a4;
+        var _a;
         return __awaiter(this, void 0, void 0, function* () {
           try {
             const { data, error } = yield this.api.signInWithPhone(phone, password, options);
             if (error || !data)
               return { data: null, user: null, session: null, error };
-            if ((_a4 = data === null || data === void 0 ? void 0 : data.user) === null || _a4 === void 0 ? void 0 : _a4.phone_confirmed_at) {
+            if ((_a = data === null || data === void 0 ? void 0 : data.user) === null || _a === void 0 ? void 0 : _a.phone_confirmed_at) {
               this._saveSession(data);
               this._notifyAllSubscribers("SIGNED_IN");
             }
@@ -8909,9 +8884,9 @@ var require_GoTrueClient = __commonJS({
         });
       }
       _callRefreshToken(refresh_token) {
-        var _a4;
+        var _a;
         if (refresh_token === void 0) {
-          refresh_token = (_a4 = this.currentSession) === null || _a4 === void 0 ? void 0 : _a4.refresh_token;
+          refresh_token = (_a = this.currentSession) === null || _a === void 0 ? void 0 : _a.refresh_token;
         }
         return __awaiter(this, void 0, void 0, function* () {
           try {
@@ -8984,10 +8959,10 @@ var require_GoTrueClient = __commonJS({
         }
         try {
           window === null || window === void 0 ? void 0 : window.addEventListener("storage", (e2) => {
-            var _a4;
+            var _a;
             if (e2.key === constants_1.STORAGE_KEY) {
               const newSession = JSON.parse(String(e2.newValue));
-              if ((_a4 = newSession === null || newSession === void 0 ? void 0 : newSession.currentSession) === null || _a4 === void 0 ? void 0 : _a4.access_token) {
+              if ((_a = newSession === null || newSession === void 0 ? void 0 : newSession.currentSession) === null || _a === void 0 ? void 0 : _a.access_token) {
                 this._saveSession(newSession.currentSession);
                 this._notifyAllSubscribers("SIGNED_IN");
               } else {
@@ -9177,14 +9152,14 @@ var require_types2 = __commonJS({
           body: JSON.stringify(this.body),
           signal: this.signal
         }).then((res2) => __awaiter(this, void 0, void 0, function* () {
-          var _a4, _b, _c, _d2;
+          var _a, _b, _c, _d;
           let error = null;
           let data = null;
           let count = null;
           let status = res2.status;
           let statusText = res2.statusText;
           if (res2.ok) {
-            const isReturnMinimal = (_a4 = this.headers["Prefer"]) === null || _a4 === void 0 ? void 0 : _a4.split(",").includes("return=minimal");
+            const isReturnMinimal = (_a = this.headers["Prefer"]) === null || _a === void 0 ? void 0 : _a.split(",").includes("return=minimal");
             if (this.method !== "HEAD" && !isReturnMinimal) {
               const text = yield res2.text();
               if (!text) {
@@ -9208,7 +9183,7 @@ var require_types2 = __commonJS({
                 message: body
               };
             }
-            if (error && this.allowEmpty && ((_d2 = error === null || error === void 0 ? void 0 : error.details) === null || _d2 === void 0 ? void 0 : _d2.includes("Results contain 0 rows"))) {
+            if (error && this.allowEmpty && ((_d = error === null || error === void 0 ? void 0 : error.details) === null || _d === void 0 ? void 0 : _d.includes("Results contain 0 rows"))) {
               error = null;
               status = 200;
               statusText = "OK";
@@ -9757,8 +9732,8 @@ var require_transformers = __commonJS({
       PostgresTypes2["tstzrange"] = "tstzrange";
     })(PostgresTypes = exports2.PostgresTypes || (exports2.PostgresTypes = {}));
     exports2.convertChangeData = (columns, record, options = {}) => {
-      var _a4;
-      const skipTypes = (_a4 = options.skipTypes) !== null && _a4 !== void 0 ? _a4 : [];
+      var _a;
+      const skipTypes = (_a = options.skipTypes) !== null && _a !== void 0 ? _a : [];
       return Object.keys(record).reduce((acc, rec_key) => {
         acc[rec_key] = exports2.convertColumn(rec_key, columns, record, skipTypes);
         return acc;
@@ -10219,9 +10194,9 @@ var require_node = __commonJS({
       var useColors2 = this.useColors;
       if (useColors2) {
         var c = this.color;
-        var prefix = "  [3" + c + ";1m" + name + " [0m";
+        var prefix = "  \x1B[3" + c + ";1m" + name + " \x1B[0m";
         args[0] = prefix + args[0].split("\n").join("\n" + prefix);
-        args.push("[3" + c + "m+" + exports2.humanize(this.diff) + "[0m");
+        args.push("\x1B[3" + c + "m+" + exports2.humanize(this.diff) + "\x1B[0m");
       } else {
         args[0] = new Date().toUTCString() + " " + name + " " + args[0];
       }
@@ -11435,9 +11410,10 @@ var require_WebSocketRequest = __commonJS({
       String.fromCharCode(9)
     ];
     var controlChars = [String.fromCharCode(127)];
-    for (var i2 = 0; i2 < 31; i2++) {
+    for (i2 = 0; i2 < 31; i2++) {
       controlChars.push(String.fromCharCode(i2));
     }
+    var i2;
     var cookieNameValidateRegEx = /([\x00-\x20\x22\x28\x29\x2c\x2f\x3a-\x3f\x40\x5b-\x5e\x7b\x7d\x7f])/;
     var cookieValueValidateRegEx = /[^\x21\x23-\x2b\x2d-\x3a\x3c-\x5b\x5d-\x7e]/;
     var cookieValueDQuoteValidateRegEx = /^"[^"]*"$/;
@@ -12997,9 +12973,9 @@ var require_push = __commonJS({
         this.payload = Object.assign(Object.assign({}, this.payload), payload);
       }
       receive(status, callback) {
-        var _a4;
+        var _a;
         if (this._hasReceived(status)) {
-          callback((_a4 = this.receivedResp) === null || _a4 === void 0 ? void 0 : _a4.response);
+          callback((_a = this.receivedResp) === null || _a === void 0 ? void 0 : _a.response);
         }
         this.recHooks.push({ status, callback });
         return this;
@@ -13393,8 +13369,8 @@ var require_RealtimeClient = __commonJS({
         const { topic, event, payload, ref } = data;
         let callback = () => {
           this.encode(data, (result) => {
-            var _a4;
-            (_a4 = this.conn) === null || _a4 === void 0 ? void 0 : _a4.send(result);
+            var _a;
+            (_a = this.conn) === null || _a === void 0 ? void 0 : _a.send(result);
           });
         };
         this.log("push", `${topic} ${event} (${ref})`, payload);
@@ -13481,14 +13457,14 @@ var require_RealtimeClient = __commonJS({
         }
       }
       _sendHeartbeat() {
-        var _a4;
+        var _a;
         if (!this.isConnected()) {
           return;
         }
         if (this.pendingHeartbeatRef) {
           this.pendingHeartbeatRef = null;
           this.log("transport", "heartbeat timeout. Attempting to re-establish connection");
-          (_a4 = this.conn) === null || _a4 === void 0 ? void 0 : _a4.close(constants_1.WS_CLOSE_NORMAL, "hearbeat timeout");
+          (_a = this.conn) === null || _a === void 0 ? void 0 : _a.close(constants_1.WS_CLOSE_NORMAL, "hearbeat timeout");
           return;
         }
         this.pendingHeartbeatRef = this.makeRef();
@@ -14013,14 +13989,14 @@ var require_StorageFileApi = __commonJS({
               headers["content-type"] = options.contentType;
             }
             const cleanPath = this._removeEmptyFolders(path);
-            const _path2 = this._getFinalPath(cleanPath);
-            const res = yield this.fetch(`${this.url}/object/${_path2}`, {
+            const _path = this._getFinalPath(cleanPath);
+            const res = yield this.fetch(`${this.url}/object/${_path}`, {
               method,
               body,
               headers
             });
             if (res.ok) {
-              return { data: { Key: _path2 }, error: null };
+              return { data: { Key: _path }, error: null };
             } else {
               const error = yield res.json();
               return { data: null, error };
@@ -14063,8 +14039,8 @@ var require_StorageFileApi = __commonJS({
       createSignedUrl(path, expiresIn) {
         return __awaiter(this, void 0, void 0, function* () {
           try {
-            const _path2 = this._getFinalPath(path);
-            let data = yield fetch_1.post(this.fetch, `${this.url}/object/sign/${_path2}`, { expiresIn }, { headers: this.headers });
+            const _path = this._getFinalPath(path);
+            let data = yield fetch_1.post(this.fetch, `${this.url}/object/sign/${_path}`, { expiresIn }, { headers: this.headers });
             const signedURL = `${this.url}${data.signedURL}`;
             data = { signedURL };
             return { data, error: null, signedURL };
@@ -14089,8 +14065,8 @@ var require_StorageFileApi = __commonJS({
       download(path) {
         return __awaiter(this, void 0, void 0, function* () {
           try {
-            const _path2 = this._getFinalPath(path);
-            const res = yield fetch_1.get(this.fetch, `${this.url}/object/${_path2}`, {
+            const _path = this._getFinalPath(path);
+            const res = yield fetch_1.get(this.fetch, `${this.url}/object/${_path}`, {
               headers: this.headers,
               noResolveJson: true
             });
@@ -14103,8 +14079,8 @@ var require_StorageFileApi = __commonJS({
       }
       getPublicUrl(path) {
         try {
-          const _path2 = this._getFinalPath(path);
-          const publicURL = `${this.url}/object/public/${_path2}`;
+          const _path = this._getFinalPath(path);
+          const publicURL = `${this.url}/object/public/${_path}`;
           const data = { publicURL };
           return { data, error: null, publicURL };
         } catch (error) {
@@ -14565,9 +14541,9 @@ var require_SupabaseClient = __commonJS({
         });
       }
       _getAuthHeaders() {
-        var _a4, _b;
+        var _a, _b;
         const headers = Object.assign({}, this.headers);
-        const authBearer = (_b = (_a4 = this.auth.session()) === null || _a4 === void 0 ? void 0 : _a4.access_token) !== null && _b !== void 0 ? _b : this.supabaseKey;
+        const authBearer = (_b = (_a = this.auth.session()) === null || _a === void 0 ? void 0 : _a.access_token) !== null && _b !== void 0 ? _b : this.supabaseKey;
         headers["apikey"] = this.supabaseKey;
         headers["Authorization"] = headers["Authorization"] || `Bearer ${authBearer}`;
         return headers;
@@ -14578,10 +14554,10 @@ var require_SupabaseClient = __commonJS({
         }
         try {
           return window === null || window === void 0 ? void 0 : window.addEventListener("storage", (e2) => {
-            var _a4, _b, _c;
+            var _a, _b, _c;
             if (e2.key === constants_1.STORAGE_KEY) {
               const newSession = JSON.parse(String(e2.newValue));
-              const accessToken = (_b = (_a4 = newSession === null || newSession === void 0 ? void 0 : newSession.currentSession) === null || _a4 === void 0 ? void 0 : _a4.access_token) !== null && _b !== void 0 ? _b : void 0;
+              const accessToken = (_b = (_a = newSession === null || newSession === void 0 ? void 0 : newSession.currentSession) === null || _a === void 0 ? void 0 : _a.access_token) !== null && _b !== void 0 ? _b : void 0;
               const previousAccessToken = (_c = this.auth.session()) === null || _c === void 0 ? void 0 : _c.access_token;
               if (!accessToken) {
                 this._handleTokenChanged("SIGNED_OUT", accessToken, "STORAGE");
@@ -14674,11 +14650,11 @@ var require_database = __commonJS({
 });
 
 // node_modules/node-fetch/src/index.js
-var import_node_http2 = __toModule(require("http"));
-var import_node_https = __toModule(require("https"));
-var import_node_zlib = __toModule(require("zlib"));
-var import_node_stream2 = __toModule(require("stream"));
-var import_node_buffer2 = __toModule(require("buffer"));
+var import_node_http2 = __toESM(require("http"), 1);
+var import_node_https = __toESM(require("https"), 1);
+var import_node_zlib = __toESM(require("zlib"), 1);
+var import_node_stream2 = __toESM(require("stream"), 1);
+var import_node_buffer2 = require("buffer");
 
 // node_modules/data-uri-to-buffer/dist/index.js
 function dataUriToBuffer(uri) {
@@ -14720,9 +14696,9 @@ function dataUriToBuffer(uri) {
 var dist_default = dataUriToBuffer;
 
 // node_modules/node-fetch/src/body.js
-var import_node_stream = __toModule(require("stream"));
-var import_node_util = __toModule(require("util"));
-var import_node_buffer = __toModule(require("buffer"));
+var import_node_stream = __toESM(require("stream"), 1);
+var import_node_util = require("util");
+var import_node_buffer = require("buffer");
 init_fetch_blob();
 init_esm_min();
 
@@ -14987,8 +14963,8 @@ var writeToStream = async (dest, { body }) => {
 };
 
 // node_modules/node-fetch/src/headers.js
-var import_node_util2 = __toModule(require("util"));
-var import_node_http = __toModule(require("http"));
+var import_node_util2 = require("util");
+var import_node_http = __toESM(require("http"), 1);
 var validateHeaderName = typeof import_node_http.default.validateHeaderName === "function" ? import_node_http.default.validateHeaderName : (name) => {
   if (!/^[\^`\-\w!#$%&'*+.|~]+$/.test(name)) {
     const error = new TypeError(`Header name must be a valid HTTP token [${name}]`);
@@ -15144,7 +15120,7 @@ function fromRawHeaders(headers = []) {
 }
 
 // node_modules/node-fetch/src/utils/is-redirect.js
-var redirectStatus = new Set([301, 302, 303, 307, 308]);
+var redirectStatus = /* @__PURE__ */ new Set([301, 302, 303, 307, 308]);
 var isRedirect = (code) => {
   return redirectStatus.has(code);
 };
@@ -15241,8 +15217,8 @@ Object.defineProperties(Response.prototype, {
 });
 
 // node_modules/node-fetch/src/request.js
-var import_node_url = __toModule(require("url"));
-var import_node_util3 = __toModule(require("util"));
+var import_node_url = require("url");
+var import_node_util3 = require("util");
 
 // node_modules/node-fetch/src/utils/get-search.js
 var getSearch = (parsedURL) => {
@@ -15255,7 +15231,7 @@ var getSearch = (parsedURL) => {
 };
 
 // node_modules/node-fetch/src/utils/referrer.js
-var import_node_net = __toModule(require("net"));
+var import_node_net = require("net");
 function stripURLForUseAsAReferrer(url, originOnly = false) {
   if (url == null) {
     return "no-referrer";
@@ -15273,7 +15249,7 @@ function stripURLForUseAsAReferrer(url, originOnly = false) {
   }
   return url;
 }
-var ReferrerPolicy = new Set([
+var ReferrerPolicy = /* @__PURE__ */ new Set([
   "",
   "no-referrer",
   "no-referrer-when-downgrade",
@@ -15583,7 +15559,7 @@ var AbortError = class extends FetchBaseError {
 // node_modules/node-fetch/src/index.js
 init_esm_min();
 init_from();
-var supportedSchemas = new Set(["data:", "http:", "https:"]);
+var supportedSchemas = /* @__PURE__ */ new Set(["data:", "http:", "https:"]);
 async function fetch2(url, options_) {
   return new Promise((resolve, reject) => {
     const request = new Request(url, options_);
