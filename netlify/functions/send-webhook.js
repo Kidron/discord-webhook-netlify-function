@@ -44,6 +44,9 @@ exports.handler = async (event, context) => {
 
       response = await discordData.map(url => {
         fetch(url.discord_url, options)
+          .then(res => {
+            return res.json();
+          })
             console.log(`Webhook sent to ${url.discord_url}`);
       })
       // discordData.forEach(url => {
