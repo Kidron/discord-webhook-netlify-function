@@ -37,7 +37,9 @@ exports.handler = async (event, context) => {
     notifyRole = `@<${discordData.role_id}>`
   } 
 
-  console.log(notifyRole);
+  console.log(`notifyRole is set to ${notifyRole}`);
+
+  // Handle queue color by implementing orange if less than 1k
 
   const config = {
     method: 'POST',
