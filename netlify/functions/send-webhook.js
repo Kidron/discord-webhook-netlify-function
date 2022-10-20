@@ -25,8 +25,10 @@ exports.handler = async (event, context) => {
     await supabase
     .from('benediction-queue')
     .update({ queue_started: true })
-    // queueData.queue_started
-    //   .update()
+  } else {
+      await supabase
+      .from('benediction-queue')
+      .update({ queue_started: false })
   }
 
   let notifyRole = "";
