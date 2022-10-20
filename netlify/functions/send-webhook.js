@@ -8,8 +8,11 @@ exports.handler = async (event, context) => {
 
   const { data: discord_data, error: discord_error } = await supabase
   .from('discord_webhooks')
-  .select('discord_url')
+  .select()
   const discordData = discord_data;
+
+  // console.log(discordData);
+
 
   const { data: queue_data, error: queue_error } = await supabase
   .from('benediction-queue')
@@ -26,49 +29,55 @@ exports.handler = async (event, context) => {
     .from('benediction-queue')
     .update({ queue_started: true })
     .eq('id', 1)
-  } else {
-      await supabase
-      .from('benediction-queue')
-      .update({ queue_started: false })
-      .eq('id', 1)
-  }
-
-  let notifyRole = "";
-
-  if(queueData.queue_started && !queueData.notify) {
-    notifyRole = `<@&${discordData.role_id}>`
   } 
 
-  console.log(`notifyRole is set to ${notifyRole}`);
+  // if(queueData.queue_started && !queueData.notify) {
+  //   await supabase
+  //   .from('benediction-queue')
+  //   .update({ notify: true })
+  //   .eq('id', 1)
+  // }
 
-  // Handle queue color by implementing orange if less than 1k
-
-  const config = {
-    method: 'POST',
-    body: JSON.stringify({
-      "content": `${notifyRole}`,
-    username: `Benediction Current Queue: ${queueData.number_in_queue}`,
-    embeds: [{
-      "color": `${queueData.number_in_queue > 0 ? 16711680 : 2021216}`,
-      "title": `Number in queue: ${queueData.number_in_queue}`,
-      "description": `Blizzard ETA: ${queueData.blizzard_eta}`,
-      "image": {
-        "url": queueUrl
-      },
-      "footer": {
-        "text": `${queueData.as_of} EST \nTo add this to your server add Kidron#8857 on discord \nCredits to https://multidollar.company/, if they go down the count will be off`
-      }
-    }]
-    }), 
-    headers: { 'Content-Type': 'application/json' }
+// Handle queue color - default green, greater than 1 orange, more than 999 red
+let embedColor = 2021216;
+if (queueData.number_in_queue > 999) {
+  embedColor = 16711680;
+} else if (queueData.number_in_queue > 0) {
+  embedColor = 16753920;
 }
 
   
 
 //POST to any URLs in db
-  const requests = discordData.map(url => fetch(url.discord_url, config));
+  const requests = discordData.map(url => {   
+     
+
+    const discordRoleId = `<@&${url.role_id}>`
+
+    const config = {
+      method: 'POST',
+      body: JSON.stringify({
+        "content": `${queueData.notify ? discordRoleId : ""}`,
+      username: `Benediction Current Queue: ${queueData.number_in_queue}`,
+      embeds: [{
+        "color": `${embedColor}`,
+        "title": `Number in queue: ${queueData.number_in_queue}`,
+        "description": `Blizzard ETA: ${queueData.blizzard_eta}`,
+        "image": {
+          "url": queueUrl
+        },
+        "footer": {
+          "text": `${queueData.as_of} EST \nTo add this to your server add Kidron#8857 on discord \nCredits to https://multidollar.company/, if they go down the count will be off`
+        }
+      }]
+      }), 
+      headers: { 'Content-Type': 'application/json' }
+  }
+
+    fetch(url.discord_url, config)
+  });
   const responses = await Promise.all(requests);
-  const promises = responses.map(response => response.text());
+  const promises = responses.map(response => response);
   const fetchData = await Promise.all(promises);
     
   //Need to add error handling
