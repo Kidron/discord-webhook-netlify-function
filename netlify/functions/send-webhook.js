@@ -20,6 +20,7 @@ exports.handler = async (event, context) => {
   const queueUrl = "https://ciktdhbfjlocsbqtikcn.supabase.co/storage/v1/object/public/public/current-bene-queue.png";
 
 
+  // if queue starts update queue_started to true
   if(queueData.number_in_queue > 0 && !queueData.queue_started) {
     await supabase
     .from('benediction-queue')
@@ -33,6 +34,8 @@ exports.handler = async (event, context) => {
   if(queueData.queue_started && !queueData.notify) {
     notifyRole = `@<${discordData.role_id}>`
   } 
+
+  console.log(notifyRole);
 
   const config = {
     method: 'POST',
