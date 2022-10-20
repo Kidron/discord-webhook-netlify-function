@@ -31,6 +31,27 @@ exports.handler = async (event, context) => {
     .eq('id', 1)
   } 
 
+  if(queueData.number_in_queue < 1 && queueData.queue_started) {
+    await supabase
+    .from('benediction-queue')
+    .update({ queue_started: false })
+    .eq('id', 1)
+  } 
+
+  // if(queueData.queue_started && queueData.number_in_queue > 0) {
+  //   await supabase
+  //   .from('benediction-queue')
+  //   .update({ notify: true })
+  //   .eq('id', 1)
+  // }
+
+  // if (queueData.queue_started && queueData.notify) {
+  //   await supabase
+  //   .from('benediction-queue')
+  //   .update({ notify: false })
+  //   .eq('id', 1)
+  // }
+
   // if(queueData.queue_started && !queueData.notify) {
   //   await supabase
   //   .from('benediction-queue')
