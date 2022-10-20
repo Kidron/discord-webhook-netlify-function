@@ -98,7 +98,7 @@ if (queueData.number_in_queue > 999) {
     fetch(url.discord_url, config)
   });
   const responses = await Promise.all(requests);
-  const promises = responses.map(response => response);
+  const promises = responses.map(response => response.text());
   const fetchData = await Promise.all(promises);
     
   //Need to add error handling
