@@ -11,9 +11,6 @@ exports.handler = async (event, context) => {
   .select()
   const discordData = discord_data;
 
-  // console.log(discordData);
-
-
   const { data: queue_data, error: queue_error } = await supabase
   .from('benediction-queue')
   .select()
