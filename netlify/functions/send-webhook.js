@@ -19,10 +19,25 @@ exports.handler = async (event, context) => {
 
   const queueUrl = "https://ciktdhbfjlocsbqtikcn.supabase.co/storage/v1/object/public/public/current-bene-queue.png";
 
+
+  if(queueData.number_in_queue > 0 && !queueData.queue_started) {
+    await supabase
+    .from('benediction-queue')
+    .update({ queue_started: true })
+    // queueData.queue_started
+    //   .update()
+  }
+
+  let notifyRole = "";
+
+  if(queueData.queue_started && !queueData.notify) {
+    notifyRole = `@<${discordData.role_id}>`
+  } 
+
   const config = {
     method: 'POST',
     body: JSON.stringify({
-      "content": "",
+      "content": `${notifyRole}`,
     username: `Benediction Current Queue: ${queueData.number_in_queue}`,
     embeds: [{
       "color": `${queueData.number_in_queue > 0 ? 16711680 : 2021216}`,
@@ -38,6 +53,8 @@ exports.handler = async (event, context) => {
     }), 
     headers: { 'Content-Type': 'application/json' }
 }
+
+  
 
 //POST to any URLs in db
   const requests = discordData.map(url => fetch(url.discord_url, config));
