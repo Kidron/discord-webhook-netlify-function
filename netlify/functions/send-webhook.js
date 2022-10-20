@@ -36,7 +36,7 @@ exports.handler = async (event, context) => {
   let notifyRole = "";
 
   if(queueData.queue_started && !queueData.notify) {
-    notifyRole = `<@${discordData.role_id}>`
+    notifyRole = `<@&${discordData.role_id}>`
   } 
 
   console.log(`notifyRole is set to ${notifyRole}`);
