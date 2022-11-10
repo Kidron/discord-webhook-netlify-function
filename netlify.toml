@@ -1,5 +1,5 @@
-[functions."send-to-database"]
-  schedule = "* * * * *"
+# [functions."send-to-database"]
+#   schedule = "* * * * *"
 
-[functions."send-webhook"]
-  schedule = "*/5 * * * *"
+# [functions."send-webhook"]
+#   schedule = "*/5 * * * *"
